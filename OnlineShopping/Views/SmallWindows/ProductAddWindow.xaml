@@ -1,0 +1,87 @@
+﻿<Window x:Class="OnlineShopping.Views.SmallWindows.ProductAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:smallwindows="clr-namespace:OnlineShopping.ViewModels.SmallWindows" 
+        d:DataContext="{d:DesignInstance Type=smallwindows:ProductAddViewModel}"
+        mc:Ignorable="d"
+        Title="ProductAddWindow" Height="300" Width="300" AllowsTransparency="True" Background="Gray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Rectangle  Fill="BlueViolet"/>
+            <Label Content="Product addition window" Foreground="Black"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" Content="Name" Background="BlueViolet"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBox VerticalAlignment="Center" Width="230" Text="{Binding CurrentProduct.Name}" Background="White" Style="{DynamicResource MaterialDesignTextBox}"  />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" Content="Quantity" Background="BlueViolet"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBox VerticalAlignment="Center" Width="230" Text="{Binding CurrentProduct.Quantity}" Background="White" Style="{DynamicResource MaterialDesignTextBox}"  />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" Content="Price" Background="BlueViolet"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBox VerticalAlignment="Center" Width="230" Text="{Binding CurrentProduct.Price}" Background="White" Style="{DynamicResource MaterialDesignTextBox}"  />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" Content="Category" Background="BlueViolet"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <ComboBox ItemsSource="{Binding Categories}" Text="{Binding CurrentProduct.Category}" DisplayMemberPath="Name" 
+                      SelectedItem="{Binding CurrentProduct.Category}" SelectedValue="{Binding CurrentProduct.Category.Id}"
+                      SelectedValuePath="Id" VerticalAlignment="Center" Width="230" Background="White" Style="{DynamicResource MaterialDesignComboBox}"  />
+            </StackPanel>
+        </Grid>
+        <StackPanel HorizontalAlignment="Center"  Orientation="Horizontal" Grid.Row="5">
+            <Button HorizontalAlignment="Right"  Style="{DynamicResource MaterialDesignFlatAccentButton}"  Width="90" Content="Save" Command="{Binding Add}" BorderThickness="3" BorderBrush="BlueViolet" Foreground="Black"/>
+            <Button HorizontalAlignment="Right"  Style="{DynamicResource MaterialDesignFlatAccentButton}" Click="CloseClick" Width="90" Content="Cancel" BorderThickness="3" BorderBrush="BlueViolet" Foreground="Black"/>
+        </StackPanel>
+    </Grid>
+</Window>
